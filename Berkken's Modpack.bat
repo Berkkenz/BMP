@@ -83,6 +83,19 @@ if not exist %MCPATH% (
 	exit /b 1
 )
 
+if not exist "%AppData%\Roaming\.minecraft\versions\1.16.5-forge-36.2.42\1.16.5-forge-36.2.42.jar" (
+	curl -L -o %temp%\forgeinstaller.exe "https://maven.minecraftforge.net/net/minecraftforge/forge/1.16.5-36.2.42/forge-1.16.5-36.2.42-installer.jar"
+	start /wait %temp%\forgeinstaller.exe /s
+	del %temp%\forgeinstaller.exe /Q /F
+	if not exist "%appdata%\Roaming\.minecraft\versions\1.16.5-forge-36.2.42\1.16.5-forge-36.2.42.jar" (
+		echo Forge install has failed, Exiting...
+		pause
+		exit /b 1
+	)
+	echo Forge installed!
+	timeout 2
+)
+
 :: THIS IS THE DELETE AND COPY CODELINE.
 del "%MCPATH%\mods" /Q /F
 del "%MCPATH%\resourcepacks" /Q /F
