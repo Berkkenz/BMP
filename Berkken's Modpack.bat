@@ -25,9 +25,20 @@ if not exist %GITPATH% (
 	pause
 	exit /b 0
 )
+cd %~dp0
+if not exist ".git" (
+	echo No GitHub repoistory detected, Starting initiation...
+	git init
+	git remote add origin https://github.com/Berkkenz/BMP
+	git pull master
+	if not exist ".git" (
+		echo GitHub repository setup failed, Exiting...
+		pause
+		exit /b 1
+	)
+)
 
 :: THIS IS THE INSTALLER UPDATE SECTION
-cd %~dp0
 git fetch origin
 git diff --quiet origin/main || (
 	echo Updates found! Updating...
