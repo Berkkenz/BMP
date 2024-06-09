@@ -85,7 +85,10 @@ if not exist %MCPATH% (
 
 if not exist "%AppData%\.minecraft\versions\1.16.5-forge-36.2.42\1.16.5-forge-36.2.42.jar" (
 	curl -L -o %temp%\forgeinstaller.jar "https://maven.minecraftforge.net/net/minecraftforge/forge/1.16.5-36.2.42/forge-1.16.5-36.2.42-installer.jar"
+	setlocal
+	set APPDATA=%MCPATH%
 	%JAVA8PATH% -jar %temp%\forgeinstaller.jar --installClient --target %MCPATH%
+	endlocal
 	del %temp%\forgeinstaller.jar /Q /F
 	if not exist "%appdata%\.minecraft\versions\1.16.5-forge-36.2.42\1.16.5-forge-36.2.42.jar" (
 		echo Forge install has failed, Exiting...
