@@ -26,7 +26,6 @@ if not exist %GITPATH% (
 	echo MsgBox "Git Install Successful. Please Restart the Application.", vbOKOnly, "UPDATE SUCCESSFUL!." > "%temp%\gittemp.vbs"
 	cscript //nologo "%temp%\gittemp.vbs"
 	del "%temp%\gittemp.vbs" /Q /F
-	pause
 	exit /b 0
 )
 cd %~dp0
