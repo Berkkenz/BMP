@@ -44,7 +44,7 @@ if not exist %JAVA17PATH% (
 	echo Java 17 not installed, Attempting installation...
 	curl -L -o %temp%\java17installer.exe "https://download.oracle.com/java/17/archive/jdk-17.0.10_windows-x64_bin.exe"
 	start /wait %temp%\java17installer.exe
-	del %temp%\java17installer.exe" /Q /F
+	del %temp%\java17installer.exe /Q /F
 	if not exist %JAVA17PATH% (
 		cls
 		echo Install failed. Exiting...
@@ -60,7 +60,7 @@ if not exist %JAVA8PATH% (
 	echo Java 8 not installed, Attempting installation...
 	curl -L -o %appdata%\java8installer.exe "https://javadl.oracle.com/webapps/download/AutoDL?BundleId=249833_43d62d619be4e416215729597d70b8ac"
 	start %temp%\java8installer.exe
-	del "%temp%\java8installer.exe" /Q /F
+	del %temp%\java8installer.exe /Q /F
 	if not exist %JAVA8PATH% (
 		cls
 		echo Install failed. Exiting...
