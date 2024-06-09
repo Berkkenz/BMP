@@ -145,5 +145,8 @@ if %response% == 6 (
 
 cls
 echo Update Completed! Enjoy your Mods!
+echo MsgBox "Installation Finised. Enjoy your Mods!", vbOKOnly, "UPDATE SUCCESSFUL!." > "%temp%\fintemp.vbs"
+cscript //nologo "%temp%\fintemp.vbs"
+del "%temp%\fintemp.vbs" /Q /F
 pause
 exit /b 0
