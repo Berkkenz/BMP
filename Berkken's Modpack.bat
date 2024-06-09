@@ -20,8 +20,10 @@ if not exist %GITPATH% (
 		pause
 		exit /b 1
 	)
-	echo Git has been installed
-	timeout 2
+	cls
+	echo Git has been installed, please restart the application!
+	pause
+	exit /b 0
 )
 
 :: THIS IS THE INSTALLER UPDATE SECTION
@@ -51,6 +53,7 @@ if not exist %JAVA17PATH% (
 		pause
 		exit /b 1
 	)
+	cls
 	echo Java 17 installed...
 	timeout 2
 )
