@@ -88,11 +88,13 @@ del "%MCPATH%\mods" /Q /F
 del "%MCPATH%\resourcepacks" /Q /F
 del "%MCPATH%\shaderpacks" /Q /F
 del "%MCPATH%\config" /Q /F
+del "%MCPATH%\emotes" /Q /F
 
-xcopy "%~dp0\game\.minecraft\mods" "%MCPATH%\mods" /s /e /h /i /y
-xcopy "%~dp0\game\.minecraft\shaderpacks" "%MCPATH%\shaderpacks" /s /e /h /i /y
-xcopy "%~dp0\game\.minecraft\resourcepacks" "%MCPATH%\resourcepacks" /s /e /h /i /y
-xcopy "%~dp0\game\.minecraft\config" "%MCPATH%\config" /s /e /h /i /y
+xcopy "%~dp0\game\.minecraft\mods" "%MCPATH%\mods" /e /h /i /y
+xcopy "%~dp0\game\.minecraft\shaderpacks" "%MCPATH%\shaderpacks" /e /h /i /y
+xcopy "%~dp0\game\.minecraft\resourcepacks" "%MCPATH%\resourcepacks" /e /h /i /y
+xcopy "%~dp0\game\.minecraft\config" "%MCPATH%\config" /e /h /i /y
+xcopy "%~dp0\game\.minecraft\emotes" "%MCPATH%\emotes" /e /h /i /y
 
 cls
 echo Update Completed! Enjoy your Mods!
