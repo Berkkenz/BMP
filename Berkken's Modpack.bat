@@ -111,6 +111,22 @@ xcopy "%~dp0\game\.minecraft\resourcepacks" "%MCPATH%\resourcepacks" /e /h /i /y
 xcopy "%~dp0\game\.minecraft\config" "%MCPATH%\config" /e /h /i /y
 xcopy "%~dp0\game\.minecraft\emotes" "%MCPATH%\emotes" /e /h /i /y
 
+setlocal
+set VBSCRIPT=%temp%\prompt.vbs
+echo Set WshShell = WScript.CreateObject("WScript.Shell") > %VBSCRIPT%
+echo response = WshShell.Popup("Would you like to apply the recommended settings? This will OVERWRITE your current settings.", 0, "Confirmation", 4 + 32) >> %VBSCRIPT%
+echo WScript.Quit response >> %VBSCRIPT%
+
+cscript /nologo %VBSCRIPT%
+set response=%errorlevel%
+del %VBSCRIPT%
+
+if %response% == 6 (
+    echo Applying recommended settings...
+    del "%MCPATH%\options.txt" /Q /F
+	xcopy "%~dp0\game\.minecraft\options.txt" "%MCPATH%\options.txt" /e /h /i /y
+)
+
 cls
 echo Update Completed! Enjoy your Mods!
 pause
