@@ -23,7 +23,7 @@ if not exist %GITPATH% (
 	cls
 	echo Git has been installed, please restart the application!
 	echo Update completed... Please restart!
-	powershell -c "(New-Object Media.SoundPlayer 'C:\Windows\Media\Windows Exclamation.wav').PlaySync();"
+	powershell -c "(New-Object Media.SoundPlayer 'C:\Windows\Media\Windows Exclamation.wav').Play();"
 	echo MsgBox "Git Install Successful. Please Restart the Application.", vbOKOnly, "UPDATE SUCCESSFUL!." > "%temp%\gittemp.vbs"
 	cscript //nologo "%temp%\gittemp.vbs"
 	del "%temp%\gittemp.vbs" /Q /F
@@ -48,7 +48,7 @@ git diff --quiet origin/main || (
 	echo Updates found! Updating...
 	git reset --hard origin/main
 	echo Update completed... Please restart!
-	powershell -c "(New-Object Media.SoundPlayer 'C:\Windows\Media\Windows Exclamation.wav').PlaySync();"
+	powershell -c "(New-Object Media.SoundPlayer 'C:\Windows\Media\Windows Exclamation.wav').Play();"
 	echo MsgBox "Update Successful. Please Restart the Application.", vbOKOnly, "UPDATE SUCCESSFUL!." > "%temp%\hubtemp.vbs"
 	cscript //nologo "%temp%\hubtemp.vbs"
 	del "%temp%\hubtemp.vbs" /Q /F
@@ -131,7 +131,7 @@ xcopy "%~dp0\game\.minecraft\emotes" "%MCPATH%\emotes" /e /h /i /y
 
 setlocal
 set VBSCRIPT=%temp%\prompt.vbs
-powershell -c "(New-Object Media.SoundPlayer 'C:\Windows\Media\Windows Exclamation.wav').PlaySync();"
+powershell -c "(New-Object Media.SoundPlayer 'C:\Windows\Media\Windows Exclamation.wav').Play();"
 echo Set WshShell = WScript.CreateObject("WScript.Shell") > %VBSCRIPT%
 echo response = WshShell.Popup("Would you like to apply the recommended settings?            This will OVERWRITE your current settings.", 0, "Confirmation", 4 + 32) >> %VBSCRIPT%
 echo WScript.Quit response >> %VBSCRIPT%
@@ -148,7 +148,7 @@ if %response% == 6 (
 
 cls
 echo Update Completed! Enjoy your Mods!
-powershell -c "(New-Object Media.SoundPlayer 'C:\Windows\Media\Windows Exclamation.wav').PlaySync();"
+powershell -c "(New-Object Media.SoundPlayer 'C:\Windows\Media\Windows Exclamation.wav').Play();"
 echo MsgBox "Installation Finised. Enjoy your Mods!", vbOKOnly, "UPDATE SUCCESSFUL!." > "%temp%\fintemp.vbs"
 cscript //nologo "%temp%\fintemp.vbs"
 del "%temp%\fintemp.vbs" /Q /F
