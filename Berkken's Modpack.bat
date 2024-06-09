@@ -32,14 +32,21 @@ if not exist %GITPATH% (
 cd %~dp0
 if not exist ".git" (
 	echo No GitHub repoistory detected, Starting initiation...
-	git init
-	git remote add origin https://github.com/Berkkenz/BMP
-	git pull master
-	if not exist ".git" (
-		echo GitHub repository setup failed, Exiting...
-		pause
+	dir /a /b 2>nul | findstr /r /c:"^" >nul
+	if %errorlevel% equ 1 (
+		git init
+		git remote add origin https://github.com/Berkkenz/BMP
+		git pull master
+		if not exist ".git" (
+			echo GitHub repository setup failed, Exiting...
+			pause
+			exit /b 1
+		)
+	) else (
+		echo MsgBox "Please place the 'Berkken's Modpack' file inside of an empty folder.", vbOKOnly, "UPDATE UNSUCCESSFUL!." > "%temp%\failtemp.vbs"
+		cscript //nologo "%temp%\failtemp.vbs"
+		del "%temp%\failtemp.vbs" /Q /F
 		exit /b 1
-	)
 )
 
 :: THIS IS THE INSTALLER UPDATE SECTION
@@ -139,6 +146,7 @@ echo WScript.Quit response >> %VBSCRIPT%
 cscript /nologo %VBSCRIPT%
 set response=%errorlevel%
 del %VBSCRIPT%
+endlocal
 
 if %response% == 6 (
     echo Applying recommended settings...
@@ -149,7 +157,7 @@ if %response% == 6 (
 cls
 echo Update Completed! Enjoy your Mods!
 powershell -c "(New-Object Media.SoundPlayer 'C:\Windows\Media\Windows Exclamation.wav').PlaySync();"
-echo MsgBox "Installation Finised. Enjoy your Mods!", vbOKOnly, "UPDATE SUCCESSFUL!." > "%temp%\fintemp.vbs"
+echo MsgBox "Installation Finised! Enjoy your Mods!", vbOKOnly, "UPDATE SUCCESSFUL!." > "%temp%\fintemp.vbs"
 cscript //nologo "%temp%\fintemp.vbs"
 del "%temp%\fintemp.vbs" /Q /F
 exit /b 0
