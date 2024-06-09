@@ -81,10 +81,10 @@ if not exist %MCPATH% (
 )
 
 :: THIS IS THE DELETE AND COPY CODELINE.
-del "%AppData%\Roaming\.minecraft\mods" /Q /F
-del "%AppData%\Roaming\.minecraft\resourcepacks" /Q /F
-del "%AppData%\Roaming\.minecraft\shaderpacks" /Q /F
-del "%AppData%\Roaming\.minecraft\config" /Q /F
+del "%MCPATH%\mods" /Q /F
+del "%MCPATH%\resourcepacks" /Q /F
+del "%MCPATH%\shaderpacks" /Q /F
+del "%MCPATH%\config" /Q /F
 
 xcopy "%~dp0\game\.minecraft\mods" "%MCPATH%\mods" /s /e /h /i /y
 xcopy "%~dp0\game\.minecraft\shaderpacks" "%MCPATH%\shaderpacks" /s /e /h /i /y
