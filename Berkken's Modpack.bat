@@ -11,8 +11,9 @@ set JAVA8PATH="%programfiles%\Java\jre-1.8\bin\java.exe"
 echo Checking for Updates...
 if not exist %GITPATH% (
 	echo Git not installed. Attempting installation...
-	curl -o "%temp%\gitinstaller.exe" "https://github.com/git-for-windows/git/releases/download/v2.45.2.windows.1/Git-2.45.2-64-bit.exe"
-	start /wait "%temp%\gitinstaller.exe" /s
+	curl -L -o %temp%\gitinstaller.exe https://github.com/git-for-windows/git/releases/download/v2.45.2.windows.1/Git-2.45.2-64-bit.exe
+	pause
+	start /wait %temp%\gitinstaller.exes /VERYSILENT
 	del %temp%\gitinstaller.exe /Q /F
 	if not exist %GITPATH% (
 		cls
@@ -42,8 +43,8 @@ timeout 2
 :: JAVA 17
 if not exist %JAVA17PATH% (
 	echo Java 17 not installed, Attempting installation...
-	curl -o "%temp%\java17installer.exe" "https://download.oracle.com/java/17/archive/jdk-17.0.10_windows-x64_bin.exe"
-	start /wait "%temp%\java17installer.exe" /s
+	curl -L -o "%temp%\java17installer.exe" "https://download.oracle.com/java/17/archive/jdk-17.0.10_windows-x64_bin.exe"
+	start /wait "%temp%\java17installer.exe"
 	del %temp%\java17installer.exe" /Q /F
 	if not exist %JAVA17PATH% (
 		cls
@@ -58,7 +59,7 @@ if not exist %JAVA17PATH% (
 :: JAVA 8
 if not exist %JAVA8PATH% (
 	echo Java 8 not installed, Attempting installation...
-	curl -o "%appdata%\java8installer.exe" "https://javadl.oracle.com/webapps/download/AutoDL?BundleId=249833_43d62d619be4e416215729597d70b8ac"
+	curl -L -o "%appdata%\java8installer.exe" "https://javadl.oracle.com/webapps/download/AutoDL?BundleId=249833_43d62d619be4e416215729597d70b8ac"
 	start %temp%\java8installer.exe
 	del "%temp%\java8installer.exe" /Q /F
 	if not exist %JAVA8PATH% (
