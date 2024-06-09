@@ -91,6 +91,7 @@ xcopy "%~dp0\game\.minecraft\shaderpacks" "%MCPATH%\shaderpacks" /s /e /h /i /y
 xcopy "%~dp0\game\.minecraft\resourcepacks" "%MCPATH%\resourcepacks" /s /e /h /i /y
 xcopy "%~dp0\game\.minecraft\config" "%MCPATH%\config" /s /e /h /i /y
 
+cls
 echo Update Completed! Enjoy your Mods!
 pause
 exit /b 0
