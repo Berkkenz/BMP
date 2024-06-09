@@ -22,6 +22,10 @@ if not exist %GITPATH% (
 	)
 	cls
 	echo Git has been installed, please restart the application!
+	echo Update completed... Please restart!
+	echo MsgBox "Git Install Successful. Please Restart the Application.", vbOKOnly, "UPDATE SUCCESSFUL!." > "%temp%\gittemp.vbs"
+	cscript //nologo "%temp%\gittemp.vbs"
+	del "%temp%\gittemp.vbs" /Q /F
 	pause
 	exit /b 0
 )
@@ -44,9 +48,9 @@ git diff --quiet origin/main || (
 	echo Updates found! Updating...
 	git reset --hard origin/main
 	echo Update completed... Please restart!
-	echo MsgBox "Update Successful. Please Restart the Application.", vbOKOnly, "UPDATE SUCCESSFUL!." > "%temp%\temp.vbs"
-	cscript //nologo "%temp%\temp.vbs"
-	del "%temp%\temp.vbs" /Q /F
+	echo MsgBox "Update Successful. Please Restart the Application.", vbOKOnly, "UPDATE SUCCESSFUL!." > "%temp%\hubtemp.vbs"
+	cscript //nologo "%temp%\hubtemp.vbs"
+	del "%temp%\hubtemp.vbs" /Q /F
 	exit /b 0
 )
 cls
