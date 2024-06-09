@@ -124,7 +124,7 @@ del %VBSCRIPT%
 if %response% == 6 (
     echo Applying recommended settings...
     del "%MCPATH%\options.txt" /Q /F
-	xcopy "%~dp0\game\.minecraft\options.txt" "%MCPATH%\options.txt" /e /h /i /y
+	xcopy "%~dp0\game\.minecraft\options.txt" "%MCPATH%" /e /h /i /y
 )
 
 cls
