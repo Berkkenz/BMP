@@ -43,7 +43,7 @@ timeout 2
 if not exist %JAVA17PATH% (
 	echo Java 17 not installed, Attempting installation...
 	curl -L -o %temp%\java17installer.exe "https://download.oracle.com/java/17/archive/jdk-17.0.10_windows-x64_bin.exe"
-	start /wait "%temp%\java17installer.exe"
+	start /wait %temp%\java17installer.exe
 	del %temp%\java17installer.exe" /Q /F
 	if not exist %JAVA17PATH% (
 		cls
