@@ -58,7 +58,7 @@ if not exist %JAVA17PATH% (
 :: JAVA 8
 if not exist %JAVA8PATH% (
 	echo Java 8 not installed, Attempting installation...
-	curl -L -o %appdata%\java8installer.exe "https://javadl.oracle.com/webapps/download/AutoDL?BundleId=249833_43d62d619be4e416215729597d70b8ac"
+	curl -L -o %temp%\java8installer.exe "https://javadl.oracle.com/webapps/download/AutoDL?BundleId=249851_43d62d619be4e416215729597d70b8ac"
 	start %temp%\java8installer.exe
 	del %temp%\java8installer.exe /Q /F
 	if not exist %JAVA8PATH% (
