@@ -12,7 +12,6 @@ echo Checking for Updates...
 if not exist %GITPATH% (
 	echo Git not installed. Attempting installation...
 	curl -L -o %temp%\gitinstaller.exe https://github.com/git-for-windows/git/releases/download/v2.45.2.windows.1/Git-2.45.2-64-bit.exe
-	pause
 	start /wait %temp%\gitinstaller.exe /VERYSILENT
 	del %temp%\gitinstaller.exe /Q /F
 	if not exist %GITPATH% (
