@@ -44,9 +44,9 @@ git diff --quiet origin/main || (
 	echo Updates found! Updating...
 	git reset --hard origin/main
 	echo Update completed... Please restart!
-	echo MsgBox "UPDATE SUCCESSFUL!", vbOKOnly, "Update Successful. Please Restart the Application." > "%temp%\temp.vbs"
-	cscript //nologo "%temp%temp.vbs"
-	del "%temp%\temp.vbs" /Q /F
+	echo MsgBox "UPDATE SUCCESSFUL!", vbOKOnly, "Update Successful. Please Restart the Application." > %temp%\temp.vbs
+	cscript //nologo %temp%temp.vbs
+	del %temp%\temp.vbs /Q /F
 	pause
 	exit /b 0
 )
