@@ -32,7 +32,9 @@ if not exist %GITPATH% (
 cd %~dp0
 if not exist ".git" (
 	echo No GitHub repoistory detected, Starting initiation...
+	pause
 	dir /a /b 2>nul | findstr /r /c:"^" >nul
+	pause
 	if %errorlevel% equ 1 (
 		git init
 		git remote add origin https://github.com/Berkkenz/BMP
@@ -47,6 +49,7 @@ if not exist ".git" (
 		cscript //nologo "%temp%\failtemp.vbs"
 		del "%temp%\failtemp.vbs" /Q /F
 		exit /b 1
+	)
 )
 
 :: THIS IS THE INSTALLER UPDATE SECTION
