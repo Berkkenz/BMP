@@ -30,6 +30,7 @@ if not exist %GITPATH% (
 	exit /b 0
 )
 cd %~dp0
+pause
 if not exist ".git" (
 	echo No GitHub repoistory detected, Starting initiation...
 	pause
