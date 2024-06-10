@@ -33,12 +33,12 @@ cd %~dp0
 pause
 if not exist ".git" (
     echo No GitHub repository detected, starting initiation...
-    set "file_count=0"
+    set "file_count=1"
     for /f "delims=" %%A in ('dir /a /b 2^>nul') do (
         set /a file_count+=1
     )
 
-    if !file_count! equ 0 (
+    if !file_count! equ 1 (
         git init
         git remote add origin %REPOURL%
         git pull origin master
