@@ -32,11 +32,14 @@ if not exist %GITPATH% (
 cd %~dp0
 pause
 if not exist ".git" (
+	setlocal
+	set "file_count=0"
 	echo No GitHub repoistory detected, Starting initiation...
+	for /f "delims=" %%A in ('dir /a /b 2^>nul') do (
+		set /a file_count+=1
+	)
 	pause
-	dir /a /b 2>nul | findstr /r /c:"^" >nul
-	pause
-	if %errorlevel% equ 1 (
+	if %file_count% equ 0 (
 		git init
 		git remote add origin https://github.com/Berkkenz/BMP
 		git pull master
@@ -45,6 +48,7 @@ if not exist ".git" (
 			pause
 			exit /b 1
 		)
+		endlocal
 	) else (
 		echo MsgBox "Please place the 'Berkken's Modpack' file inside of an empty folder.", vbOKOnly, "UPDATE UNSUCCESSFUL!." > "%temp%\failtemp.vbs"
 		cscript //nologo "%temp%\failtemp.vbs"
