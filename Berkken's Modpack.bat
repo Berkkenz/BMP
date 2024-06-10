@@ -30,7 +30,6 @@ if not exist %GITPATH% (
 	exit /b 0
 )
 cd %~dp0
-pause
 if not exist ".git" (
     echo No GitHub repository detected, starting initiation...
     set "file_count=0"
