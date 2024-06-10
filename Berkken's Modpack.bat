@@ -32,29 +32,27 @@ if not exist %GITPATH% (
 cd %~dp0
 pause
 if not exist ".git" (
-	setlocal
-	set "file_count=0"
-	echo No GitHub repoistory detected, Starting initiation...
-	for /f "delims=" %%A in ('dir /a /b 2^>nul') do (
-		set /a file_count+=1
-	)
-	pause
-	if %file_count% equ 0 (
-		git init
-		git remote add origin https://github.com/Berkkenz/BMP
-		git pull master
-		if not exist ".git" (
-			echo GitHub repository setup failed, Exiting...
-			pause
-			exit /b 1
-		)
-		endlocal
-	) else (
-		echo MsgBox "Please place the 'Berkken's Modpack' file inside of an empty folder.", vbOKOnly, "UPDATE UNSUCCESSFUL!." > "%temp%\failtemp.vbs"
-		cscript //nologo "%temp%\failtemp.vbs"
-		del "%temp%\failtemp.vbs" /Q /F
-		exit /b 1
-	)
+    echo No GitHub repository detected, starting initiation...
+    set "file_count=0"
+    for /f "delims=" %%A in ('dir /a /b 2^>nul') do (
+        set /a file_count+=1
+    )
+
+    if !file_count! equ 0 (
+        git init
+        git remote add origin %REPOURL%
+        git pull origin master
+        if not exist ".git" (
+            echo GitHub repository setup failed, exiting...
+            pause
+            exit /b 1
+        )
+    ) else (
+        echo MsgBox "Please place the 'Berkken's Modpack' file inside of an empty folder.", vbOKOnly, "UPDATE UNSUCCESSFUL!." > "%temp%\failtemp.vbs"
+        cscript //nologo "%temp%\failtemp.vbs"
+        del "%temp%\failtemp.vbs" /Q /F
+        exit /b 1
+    )
 )
 
 :: THIS IS THE INSTALLER UPDATE SECTION
